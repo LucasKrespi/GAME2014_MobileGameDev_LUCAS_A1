@@ -15,15 +15,23 @@ public class ButtonManager : MonoBehaviour
    
     public void StartButton()
     {
-        SceneManager.LoadScene(currentScene.buildIndex + 1);
+        SceneManager.LoadScene(2);
+    }
+    public void MenutButton()
+    {
+        SceneManager.LoadScene(0);
     }
     public void PreviousButton()
     {
         SceneManager.LoadScene(currentScene.buildIndex - 1);
     }
+    public void NextButton()
+    {
+        SceneManager.LoadScene(currentScene.buildIndex + 1);
+    }
     public void InstructionsButton()
     {
-        Debug.Log("INSTRUCTIONS");
+        SceneManager.LoadScene(1);
     }
 
     public void ExitButton()

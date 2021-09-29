@@ -468,7 +468,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Previous
+  m_Text: Menu
 --- !u!222 &805689345
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -848,7 +848,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -248, y: 91.94}
+  m_AnchoredPosition: {x: -800, y: 202}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1685287036
@@ -958,7 +958,7 @@ GameObject:
   - component: {fileID: 1910725361}
   - component: {fileID: 1910725360}
   m_Layer: 5
-  m_Name: Previous
+  m_Name: Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -981,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 269, y: 91.994995}
+  m_AnchoredPosition: {x: 800, y: 303}
   m_SizeDelta: {x: 150, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1910725360
@@ -1030,7 +1030,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 134581675}
         m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
-        m_MethodName: PreviousButton
+        m_MethodName: MenutButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
