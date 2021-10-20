@@ -8,7 +8,12 @@ public class GM : MonoBehaviour
 {
     private static GM GMInstance;
     private GameObject player;
+    private PlayerBehavior playerBehavior;
     public List<Image> livesImages;
+    public Text timerText;
+    private int timer;
+    public Text score;
+    private int initialTime = 120;
 
     private void Awake()
     {
@@ -25,14 +30,29 @@ public class GM : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player");
-       
+        playerBehavior = player.GetComponent<PlayerBehavior>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerBehavior>().lives < 1)
+        if  (playerBehavior.coopCount > 4)
+        {
+            //10 points for everybeat on the clock + 1000 points for the 5 coops being full
+            playerBehavior.addScore(timer * 10 + 1000);
             SceneManager.LoadScene(3);
+            PlayerPrefs.SetInt("score", playerBehavior.score);
+        }
+        if (playerBehavior.lives < 1)
+        {
+            SceneManager.LoadScene(3);
+            PlayerPrefs.SetInt("score", playerBehavior.score);
+        }
+
+        timer = initialTime - (int)Time.realtimeSinceStartup;
+        timerText.text = timer.ToString();
+
+        score.text = "Score: " + playerBehavior.score;
     }
 
     public void UpdateLivesDisplay(int currentLives)

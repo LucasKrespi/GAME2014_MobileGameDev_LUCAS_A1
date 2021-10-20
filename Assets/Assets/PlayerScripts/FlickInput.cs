@@ -44,24 +44,24 @@ public class FlickInput : MonoBehaviour
         Vector2 distance = new Vector2((m_vEndPos.x - m_vStartPos.x),
             (m_vEndPos.y - m_vStartPos.y));
 
-        if(distance.x <= m_vMinFlick.x && distance.y <= m_vMinFlick.y)
+        if(Mathf.Abs(distance.x) <= m_vMinFlick.x && Mathf.Abs(distance.x) <= m_vMinFlick.y)
         {
             m_eFlick = FlickConditions.NONE;
         }
         else if(Mathf.Abs(distance.x) > Mathf.Abs(distance.y))
         {
-            float x = Mathf.Sign(m_vEndPos.x - m_vStartPos.x);
-            if (x < 0)
+            //float x = Mathf.Sign(m_vEndPos.x - m_vStartPos.x);
+            if (distance.x < 0)
                 m_eFlick = FlickConditions.LEFT;
-            else
+            else if (distance.x > 0)
                 m_eFlick = FlickConditions.RIGHT;
         }
         else
         {
-            float y = Mathf.Sign(m_vEndPos.y - m_vStartPos.y);
-            if (y < 0)
+            //float y = Mathf.Sign(m_vEndPos.y - m_vStartPos.y);
+            if (distance.y < 0)
                 m_eFlick = FlickConditions.DOWN;
-            else
+            else if (distance.y > 0)
                 m_eFlick = FlickConditions.UP;
         }
         

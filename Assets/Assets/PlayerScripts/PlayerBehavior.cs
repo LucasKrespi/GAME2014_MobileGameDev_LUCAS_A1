@@ -16,13 +16,15 @@ public class PlayerBehavior : MonoBehaviour
     private Direction plataformDirection;
     private const float waterBoundY_min = 0.2f;
     private const float waterBoundY_max = 3.5f;
-    private int counter;
+    private int counter = 1;
 
     //imput variables
     private FlickInput flickInput;
 
     //Player Stats
     public int lives = 5;
+    public int score = 0;
+    public int coopCount = 0;
 
     
     
@@ -46,6 +48,7 @@ public class PlayerBehavior : MonoBehaviour
                     break;
                 case FlickInput.FlickConditions.UP:
                     StartCoroutine(Move(Vector2.up * m_fDistance));
+                    addScore(10);
                     break;
 
                 case FlickInput.FlickConditions.DOWN:
@@ -66,6 +69,7 @@ public class PlayerBehavior : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.W))
             {
                 StartCoroutine(Move(Vector2.up * m_fDistance));
+                addScore(10);
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -135,7 +139,21 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        TakeALive();
+        if(collision.gameObject.tag == "Damage")
+            TakeALive();
+        if (collision.gameObject.tag == "Coop")
+        {
+            if (collision.gameObject.GetComponent<CoopBehavior>().isOccupied)
+            {
+                TakeALive();
+            }
+            else
+            {
+                this.transform.position = m_vInitialPos;
+                coopCount++;
+                addScore(50);
+            }
+        }
     }
 
     private void TakeALive()
@@ -163,4 +181,8 @@ public class PlayerBehavior : MonoBehaviour
         }
     }
 
+    public void addScore(int points)
+    {
+        score += points;
+    }
 }
