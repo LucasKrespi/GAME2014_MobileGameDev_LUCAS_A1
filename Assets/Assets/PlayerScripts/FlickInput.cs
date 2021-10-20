@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlickInput : MonoBehaviour
 {
     [SerializeField]
-    Vector2 m_vMinFlick = new Vector2(50f, 50f);
+    Vector2 m_vMinFlick = new Vector2(10f, 10f);
 
     private Vector2 m_vStartPos;
     private Vector2 m_vEndPos;
@@ -21,7 +21,7 @@ public class FlickInput : MonoBehaviour
 
     private void Update()
     {
-        HandleFlickInput();
+        AssignInput();
     }
 
     private FlickConditions m_eFlick = FlickConditions.NONE;
@@ -48,20 +48,20 @@ public class FlickInput : MonoBehaviour
         {
             m_eFlick = FlickConditions.NONE;
         }
-        else if(distance.x > distance.y)
+        else if(Mathf.Abs(distance.x) > Mathf.Abs(distance.y))
         {
             float x = Mathf.Sign(m_vEndPos.x - m_vStartPos.x);
             if (x < 0)
-                m_eFlick = FlickConditions.RIGHT;
-            else if (x > 0)
                 m_eFlick = FlickConditions.LEFT;
+            else
+                m_eFlick = FlickConditions.RIGHT;
         }
         else
         {
             float y = Mathf.Sign(m_vEndPos.y - m_vStartPos.y);
             if (y < 0)
                 m_eFlick = FlickConditions.DOWN;
-            else if (y > 0)
+            else
                 m_eFlick = FlickConditions.UP;
         }
         
