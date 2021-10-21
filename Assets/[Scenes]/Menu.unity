@@ -514,6 +514,11 @@ MonoBehaviour:
     f_volume: 0.5
     b_loop: 0
     a_source: {fileID: 0}
+  - s_name: bonus
+    audio: {fileID: 8300000, guid: 8b379f9f3283314438edd16613630c15, type: 3}
+    f_volume: 0.5
+    b_loop: 0
+    a_source: {fileID: 0}
 --- !u!4 &532243472
 Transform:
   m_ObjectHideFlags: 0

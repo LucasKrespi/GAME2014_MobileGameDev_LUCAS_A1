@@ -5,7 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(FlickInput))]
 public class PlayerBehavior : MonoBehaviour
 {
-   //Movement Variables
+    //Movement Variables
     private bool m_bIsMoving = false;
     private Vector2 m_vOriginalPos, m_vTargetPos, m_vInitialPos;
     private float m_fTimetoMove;
@@ -26,8 +26,8 @@ public class PlayerBehavior : MonoBehaviour
     public int score = 0;
     public int coopCount = 0;
 
-    
-    
+
+
     void Start()
     {
         flickInput = GetComponent<FlickInput>();
@@ -40,11 +40,11 @@ public class PlayerBehavior : MonoBehaviour
         ///Flick Movement
         if (!m_bIsMoving)
         {
-           
+
             switch (flickInput.GetFlick())
             {
                 case FlickInput.FlickConditions.NONE:
-          
+
                     break;
                 case FlickInput.FlickConditions.UP:
                     StartCoroutine(Move(Vector2.up * m_fDistance));
@@ -89,11 +89,11 @@ public class PlayerBehavior : MonoBehaviour
         }
 
 
-       
+
 
         if (isInPlataform)
         {
-            if(plataformDirection == Direction.RIGHT)
+            if (plataformDirection == Direction.RIGHT)
                 this.transform.Translate(Vector2.right * Time.deltaTime * 3.0f);
             else if (plataformDirection == Direction.LEFT)
                 this.transform.Translate(Vector2.right * Time.deltaTime * -3.0f);
@@ -101,17 +101,17 @@ public class PlayerBehavior : MonoBehaviour
         else if (this.transform.position.y >= waterBoundY_min && this.transform.position.y < waterBoundY_max)
         {
 
-            if(counter % 30 == 0)
+            if (counter % 10 == 0)
             {
                 TakeALive();
                 counter = 0;
             }
             counter++;
         }
-      
 
+        checkBounds();
     }
-    
+
     private IEnumerator Move(Vector2 target)
     {
         SoundManager.GetSoundManagerInstance().PlaySound("jump");
@@ -122,7 +122,7 @@ public class PlayerBehavior : MonoBehaviour
         m_vOriginalPos = transform.position;
         m_vTargetPos = m_vOriginalPos + target;
 
-        while(m_fTimetoMove > tempTime)
+        while (m_fTimetoMove > tempTime)
         {
             transform.position = Vector3.Lerp(m_vOriginalPos, m_vTargetPos, (tempTime / m_fTimetoMove));
             tempTime += Time.deltaTime;
@@ -139,7 +139,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Damage")
+        if (collision.gameObject.tag == "Damage")
             TakeALive();
 
 
@@ -148,7 +148,7 @@ public class PlayerBehavior : MonoBehaviour
             if (collision.gameObject.GetComponent<CoopBehavior>().isOccupied)
             {
                 TakeALive();
-                
+
             }
             else
             {
@@ -181,6 +181,7 @@ public class PlayerBehavior : MonoBehaviour
         {
             addScore(200);
             collision.gameObject.SetActive(false);
+            SoundManager.GetSoundManagerInstance().PlaySound("bonus");
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -194,5 +195,17 @@ public class PlayerBehavior : MonoBehaviour
     public void addScore(int points)
     {
         score += points;
+    }
+
+    void checkBounds()
+    {
+        if (this.gameObject.transform.position.x > 10 || this.gameObject.transform.position.x < -10)
+        {
+            TakeALive();
+        }
+        if (this.gameObject.transform.position.y > 5 || this.gameObject.transform.position.y < -5)
+        {
+            TakeALive();
+        }
     }
 }

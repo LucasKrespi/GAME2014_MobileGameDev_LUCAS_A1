@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlickInput : MonoBehaviour
 {
     [SerializeField]
-    Vector2 m_vMinFlick = new Vector2(10f, 10f);
+    Vector2 m_vMinFlick = new Vector2(1f, 1f);
 
     private Vector2 m_vStartPos;
     private Vector2 m_vEndPos;

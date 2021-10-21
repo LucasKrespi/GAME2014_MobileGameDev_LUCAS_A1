@@ -43,7 +43,7 @@ public class GM : MonoBehaviour
             SceneManager.LoadScene(3);
             PlayerPrefs.SetInt("score", playerBehavior.score);
         }
-        if (playerBehavior.lives < 1)
+        if (playerBehavior.lives < 1 || timer < 0)
         {
             SceneManager.LoadScene(3);
             PlayerPrefs.SetInt("score", playerBehavior.score);

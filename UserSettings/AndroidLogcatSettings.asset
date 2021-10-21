@@ -35,18 +35,6 @@
         {
             "deviceId": "375955424e443498",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 31226,
-            "exited": true
-        },
-        {
-            "deviceId": "375955424e443498",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
-            "processId": 23914,
-            "exited": true
-        },
-        {
-            "deviceId": "375955424e443498",
-            "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 26994,
             "exited": true
         },
@@ -55,6 +43,30 @@
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 20467,
             "exited": true
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 29761,
+            "exited": true
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 498,
+            "exited": true
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 3913,
+            "exited": true
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.instagram.android",
+            "processId": 3875,
+            "exited": false
         }
     ],
     "m_Tags": {
