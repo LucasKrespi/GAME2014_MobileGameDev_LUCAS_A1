@@ -9,6 +9,7 @@ TagManager:
   - EndWater
   - Damage
   - Coop
+  - Bonus
   layers:
   - Default
   - TransparentFX

@@ -22,6 +22,5 @@ public class CoopBehavior : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         sprite.SetActive(true);
-        isOccupied = true;
     }
 }

@@ -141,14 +141,18 @@ public class PlayerBehavior : MonoBehaviour
     {
         if(collision.gameObject.tag == "Damage")
             TakeALive();
+
+
         if (collision.gameObject.tag == "Coop")
         {
             if (collision.gameObject.GetComponent<CoopBehavior>().isOccupied)
             {
                 TakeALive();
+                
             }
             else
             {
+                collision.gameObject.GetComponent<CoopBehavior>().isOccupied = true;
                 this.transform.position = m_vInitialPos;
                 coopCount++;
                 addScore(50);
@@ -171,6 +175,12 @@ public class PlayerBehavior : MonoBehaviour
         {
             plataformDirection = collision.GetComponent<PlataformsBehavior>().direction;
             isInPlataform = true;
+        }
+
+        if (collision.gameObject.tag == "Bonus")
+        {
+            addScore(200);
+            collision.gameObject.SetActive(false);
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

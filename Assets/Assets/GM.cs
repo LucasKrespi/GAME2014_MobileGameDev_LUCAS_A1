@@ -50,6 +50,7 @@ public class GM : MonoBehaviour
         }
 
         timer = initialTime - (int)Time.realtimeSinceStartup;
+        
         timerText.text = timer.ToString();
 
         score.text = "Score: " + playerBehavior.score;
