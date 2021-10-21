@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Flick input based on https://www.youtube.com/watch?v=4GcVkf-a1h0&t=426s
+
 public class FlickInput : MonoBehaviour
 {
     [SerializeField]
@@ -50,7 +52,6 @@ public class FlickInput : MonoBehaviour
         }
         else if(Mathf.Abs(distance.x) > Mathf.Abs(distance.y))
         {
-            //float x = Mathf.Sign(m_vEndPos.x - m_vStartPos.x);
             if (distance.x < 0)
                 m_eFlick = FlickConditions.LEFT;
             else if (distance.x > 0)
@@ -58,7 +59,6 @@ public class FlickInput : MonoBehaviour
         }
         else
         {
-            //float y = Mathf.Sign(m_vEndPos.y - m_vStartPos.y);
             if (distance.y < 0)
                 m_eFlick = FlickConditions.DOWN;
             else if (distance.y > 0)

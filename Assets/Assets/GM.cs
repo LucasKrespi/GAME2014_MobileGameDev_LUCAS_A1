@@ -40,16 +40,18 @@ public class GM : MonoBehaviour
         {
             //10 points for everybeat on the clock + 1000 points for the 5 coops being full
             playerBehavior.addScore(timer * 10 + 1000);
+            initialTime = 120;
             SceneManager.LoadScene(3);
             PlayerPrefs.SetInt("score", playerBehavior.score);
         }
         if (playerBehavior.lives < 1 || timer < 0)
         {
+            initialTime = 120;
             SceneManager.LoadScene(3);
             PlayerPrefs.SetInt("score", playerBehavior.score);
         }
 
-        timer = initialTime - (int)Time.realtimeSinceStartup;
+        timer = initialTime - (int)Time.timeSinceLevelLoad;
         
         timerText.text = timer.ToString();
 
